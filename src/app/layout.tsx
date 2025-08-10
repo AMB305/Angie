@@ -1,35 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Keep the default font imports
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Update title/description for your project
 export const metadata: Metadata = {
-  title: "Angie — Stories on Screen",
-  description: "A child looking down at a TV with a video invitation.",
+  title: "The Mind of Angelica — Invitation",
+  description: "Watch Angelica’s invitation.",
+  openGraph: {
+    title: "The Mind of Angelica — Invitation",
+    description: "Watch Angelica’s invitation.",
+    url: "https://themindofangelica.com",
+    images: [{ url: "/poster.jpg" }], // add poster.jpg to /public for rich previews
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Mind of Angelica — Invitation",
+    description: "Watch Angelica’s invitation.",
+    images: ["/poster.jpg"],
+  },
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}
-      >
-        {children}
-      </body>
+      <body style={{ background: "#000", color: "#fff" }}>{children}</body>
     </html>
   );
 }
